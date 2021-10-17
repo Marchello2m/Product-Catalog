@@ -25,7 +25,7 @@ class ProductAddController
     {
         $products = $this->productsRepository->getAll();
 
-        return new View('index.template.php', [
+        return new View('app/Views/main.template.php', [
             'products' => $products
         ]);
 

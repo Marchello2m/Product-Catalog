@@ -1,6 +1,7 @@
 <?php
+use App\Models\Collections\ProductsCollection;
 
-
+/** @var ProductsCollection $products */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +27,11 @@ Logout
 
 <br>
 <br>
+
 <br>
 
-<?php   foreach( $products->getProducts() as $product):?>
+
+<?php foreach( $products->getProducts() as $product):?>
     <li><?php echo $product->getCategory();?>   </li>
 
     <ul id="myUL">

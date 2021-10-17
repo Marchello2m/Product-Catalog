@@ -21,6 +21,8 @@ Register new member
 Logout
 
 <br>
+(<a href="/app/Views/main.template.php">Back</a>)
+back
 <br>
 <br>
 

@@ -8,10 +8,9 @@
     <title>ADD Product</title>
 </head>
 <body>
-
-Hello Pievieno
+Add Product
 <br>
-<a href="/">Back</a>
+(<a href="/app/Views/main.template.php">Back</a>)
 <br>
 <br/>
 <div>

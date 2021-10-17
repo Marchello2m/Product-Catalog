@@ -18,8 +18,8 @@ class ProductsController
   {
       $products=$this->productsRepository->getAll();
 
-    // require_once 'app/Views/main.template.php';
-  require_once 'app/Views/products/index.template.php';
+     //require_once 'app/Views/main.template.php';
+require_once 'app/Views/products/index.template.php';
   }
 
 

@@ -15,8 +15,8 @@ class MysqlProductsRepository implements ProductsRepository
     {
         $host ='127.0.0.1';
         $db ='products';
-        $user='';
-        $pass='';
+        $user='Marchello2m';
+        $pass='fredis007';
 
         $dsn ="mysql:host=$host;dbname=$db;charset=UTF8";
         try {

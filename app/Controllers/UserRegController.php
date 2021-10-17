@@ -57,6 +57,7 @@ class UserRegController
         }
 
         header( 'Location: /app/Views/main.template.php');
+
     }
     public function showLogOutForm()
     {
