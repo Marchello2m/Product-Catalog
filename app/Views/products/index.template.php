@@ -18,6 +18,9 @@ Register new member
 Add new member
 
 <br>
+<a href="/tag">tag</a>
+tag
+
 <br>
 <br>
 
@@ -25,16 +28,19 @@ Add new member
     <li><?php echo $product->getCategory();?>   </li>
 
     <ul id="myUL">
-
+        <li > Id: <?php echo $product->getId(); ?></li>
         <li > Brand: <?php echo $product->getName(); ?></li>
         <li > Aveilabile: <?php echo   $product->getQuantity() ; ?></li>
         <li>Created: <?php echo $product->getCreatedAt(); ?> </li>
 
     </ul>
 
-
-
 <?php endforeach;?>
 
+<?php foreach( $tags->getTags() as $tag):?>
+    <li > Id: <?php echo $tag->getId(); ?></li>
+    <li > Brand: <?php echo $tag->getCategory(); ?></li>
+
+<?php endforeach;?>
 </body>
 </html>

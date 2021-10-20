@@ -10,13 +10,16 @@ private string $category;
 private int  $quantity;
 private string $createdAt;
 private string $correctionTime;
+    private int $id;
 
     public function __construct(
+        int $id,
         string $name,
         string $category,
         int $quantity,
         ?string $createdAt=null,
         ?string $correctionTime=null
+
     )
     {
 
@@ -25,8 +28,13 @@ private string $correctionTime;
         $this->quantity = $quantity;
         $this->createdAt = $createdAt ?? Carbon::now();
         $this->correctionTime = $correctionTime?? Carbon::now();
+        $this->id = $id;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
     public function getName(): string
     {
         return $this->name;

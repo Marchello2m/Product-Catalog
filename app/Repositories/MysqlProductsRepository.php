@@ -38,6 +38,7 @@ class MysqlProductsRepository implements ProductsRepository
         foreach ($products as $product)
         {
             $productsCollection->addProduct(new Product(
+                $product['id'],
                 $product['name'],
                 $product['category'],
                 $product['quantity'],
@@ -76,5 +77,18 @@ class MysqlProductsRepository implements ProductsRepository
         );
 
 
+    }
+
+    public function merge()
+    {
+        $sql = "SELECT id_signup,id_products_in_store,
+        FROM mid
+        JOIN signup ON products_in_store
+        ORDER BY id";
+
+        $result = [];
+        foreach ($mysqli->query($sql) as $row) {
+            $data[$row['id']][] = $row;
+        }
     }
 }

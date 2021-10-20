@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Collections\ProductsCollection;
+
 include ("app/Repositories/MysqlProductsRepository.php");
 include ("app/Models/Product.php");
 
@@ -25,7 +28,7 @@ Logout
 back
 <br>
 <br>
-
+<?php /** @var ProductsCollection $products */ ?>
 <?php  foreach( $products->getProducts() as $product):?>
     <li><?php echo $product->getCategory();?>   </li>
 

@@ -24,6 +24,10 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 
     $r->addRoute('GET','/logout','UserRegController@showLogOutForm');
     $r->addRoute('POST','/logout','UserRegController@logout');
+
+    $r->addRoute('GET', '/tag', 'TagController@index');
+   // $r->addRoute('POST', '/tag', 'TagController@index');
+    $r->addRoute('POST', '/tag', 'TagController@store');
 });
 
 // Fetch method and URI from somewhere
