@@ -1,6 +1,8 @@
 <?php
 use App\Models\Collections\ProductsCollection;
 
+
+
 /** @var ProductsCollection $products */
 ?>
 <!DOCTYPE html>
@@ -29,7 +31,8 @@ Logout
 <br>
 
 <br>
-<?php /** @var ProductsCollection $products */ ?>
+
+
 <?php foreach( $products->getProducts() as $product):?>
     <li><?php echo $product->getCategory();?>   </li>
 
@@ -45,10 +48,6 @@ Logout
 
 <?php endforeach;?>
 <br>
-<?php foreach( $tags->getTags() as $tag):?>
-    <li > Id: <?php echo $tag->getId(); ?></li>
-    <li > Brand: <?php echo $tag->getCategory(); ?></li>
 
-<?php endforeach;?>
 </body>
 </html>

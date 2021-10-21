@@ -30,7 +30,7 @@ class MysqlUsersRepository implements UsersRepository
 
     public function getAll(): UsersCollection
     {
-        $sql = " SELECT * FROM signup";
+        $sql = " SELECT * FROM users";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([]);
 
@@ -52,7 +52,7 @@ class MysqlUsersRepository implements UsersRepository
     }
     public function getByEmail(string $email): ?User
     {
-        $sql = " SELECT * FROM signup WHERE email =?";
+        $sql = " SELECT * FROM users WHERE email =?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$email]);
 
@@ -72,7 +72,7 @@ class MysqlUsersRepository implements UsersRepository
 
     public function save(User $user): void
     {
-        $sql = "INSERT INTO signup (id,email,name,password, created_at)VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO users (id,email,name,password, created_at)VALUES (?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([
             $user->getId(),
@@ -84,7 +84,7 @@ class MysqlUsersRepository implements UsersRepository
     }
     public function getOne(string $id): ?User
     {
-        $sql ="SELECT * FROM signup  WHERE id =?";
+        $sql ="SELECT * FROM users  WHERE id =?";
         $stmt=$this->connection->prepare($sql);
         $stmt->execute([$id]);
         $user =$stmt->fetch();

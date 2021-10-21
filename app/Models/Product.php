@@ -11,14 +11,16 @@ private int  $quantity;
 private string $createdAt;
 private string $correctionTime;
     private int $id;
+    private int $tagId;
 
     public function __construct(
         int $id,
         string $name,
         string $category,
         int $quantity,
-        ?string $createdAt=null,
-        ?string $correctionTime=null
+        string $createdAt,
+        string $correctionTime,
+        int $tagId
 
     )
     {
@@ -29,6 +31,7 @@ private string $correctionTime;
         $this->createdAt = $createdAt ?? Carbon::now();
         $this->correctionTime = $correctionTime?? Carbon::now();
         $this->id = $id;
+        $this->tagId=$tagId;
     }
 
     public function getId(): int
@@ -59,4 +62,22 @@ private string $correctionTime;
     {
         return $this->correctionTime;
     }
+
+    public function getTagId(): int
+    {
+        return $this->tagId;
+    }
+
+    public function setTagId(int $tagId): void
+    {
+        $this->tagId = $tagId;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
+
 }

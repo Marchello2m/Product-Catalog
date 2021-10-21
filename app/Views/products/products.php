@@ -2,9 +2,6 @@
 
 use App\Models\Collections\ProductsCollection;
 
-include ("app/Repositories/MysqlProductsRepository.php");
-include ("app/Models/Product.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

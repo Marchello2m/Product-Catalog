@@ -17,11 +17,13 @@ Add Product
     <form action="/create" method="POST">
         <div>
 
-            <label for="name">Name:</label>
+            <label for="name">Product:</label>
             <input id="name" type="text" name="name"/>
         </div>
         <br/>
+
         <div>
+            ///cekbosu jauzmauc ar categorijam setId
             <label for="category">Category:</label>
             <input id="category" type="text" name="category"/>
         </div>
@@ -32,6 +34,10 @@ Add Product
         </div>
 
         <br/>
+        <div>
+            <label for="setId">Cipars kategorijai</label>
+            <input id="setId" type="text" name="setId"/>
+        </div>
         <button type="submit">Submit</button>
 
 </body>

@@ -27,7 +27,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 
     $r->addRoute('GET', '/tag', 'TagController@index');
    // $r->addRoute('POST', '/tag', 'TagController@index');
-    $r->addRoute('POST', '/tag', 'TagController@store');
+   $r->addRoute('POST', '/tag', 'TagController@store');
 });
 
 // Fetch method and URI from somewhere

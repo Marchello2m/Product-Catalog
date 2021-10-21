@@ -38,12 +38,14 @@ class MysqlProductsRepository implements ProductsRepository
         foreach ($products as $product)
         {
             $productsCollection->addProduct(new Product(
+
                 $product['id'],
                 $product['name'],
                 $product['category'],
                 $product['quantity'],
                 $product['createdAt'],
-                $product['correctionTime']
+                $product['correctionTime'],
+                $product['tagId']
             ));
         }
         return $productsCollection;
@@ -51,14 +53,15 @@ class MysqlProductsRepository implements ProductsRepository
     }
     public function save(Product $product):void
     {
-        $sql = "INSERT INTO products_in_store (name,category,quantity, createdAt,correctionTime)VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO products_in_store (name,category,quantity, createdAt,correctionTime,tagId)VALUES (?,?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([
             $product->getName(),
             $product->getCategory(),
             $product->getQuantity(),
             $product->getCreatedAt(),
-            $product->getCorrectionTime()
+            $product->getCorrectionTime(),
+            $product->getTagId()
         ]);
     }
     public function getOne(string $id): ?Product
@@ -69,11 +72,13 @@ class MysqlProductsRepository implements ProductsRepository
         $product =$stmt->fetch();
 
         return new  Product(
+            $product['id'],
             $product['name'],
             $product['category'],
             $product['quantity'],
             $product['createdAt'],
-            $product['correctionTime']
+            $product['correctionTime'],
+            $product['tagId']
         );
 
 

@@ -1,5 +1,9 @@
 <?php
+use App\Models\Collections\ProductsCollection;
 
+
+
+/** @var ProductsCollection $products */
 ?>
 
 <!DOCTYPE html>
@@ -37,10 +41,6 @@ tag
 
 <?php endforeach;?>
 
-<?php foreach( $tags->getTags() as $tag):?>
-    <li > Id: <?php echo $tag->getId(); ?></li>
-    <li > Brand: <?php echo $tag->getCategory(); ?></li>
 
-<?php endforeach;?>
 </body>
 </html>

@@ -41,12 +41,13 @@ class ProductAddController
     {
         $this->productsRepository->save(
             new Product(
-
+                $_POST['id'],
                 $_POST['name'],
                 $_POST['category'],
                 $_POST['quantity'],
                 $_POST['createdAt'],
-                $_POST['correctionTime']
+                $_POST['correctionTime'],
+                $_POST['tagId']
 
 
             )
