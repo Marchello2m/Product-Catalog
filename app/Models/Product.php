@@ -1,51 +1,48 @@
 <?php
+
 namespace App\Models;
 
 use Carbon\Carbon;
+use Exception;
+use function App\Exceptions\checkNum;
 
 class Product
 {
-private string $name;
-private string $category;
-private int  $quantity;
-private string $createdAt;
-private string $correctionTime;
-    private int $id;
+    private string $id;
+    private string $name;
+    private int $quantity;
     private int $tagId;
+    private string $createdAt;
+    private string $correctionTime;
 
     public function __construct(
-        int $id,
+        string $id,
         string $name,
-        string $category,
         int $quantity,
-        string $createdAt,
-        string $correctionTime,
-        int $tagId
+        int $tagId ,
+        ?string $createdAt = null,
+        ?string $correctionTime = null
 
     )
     {
-
-        $this->name = $name;
-        $this->category = $category;
-        $this->quantity = $quantity;
-        $this->createdAt = $createdAt ?? Carbon::now();
-        $this->correctionTime = $correctionTime?? Carbon::now();
         $this->id = $id;
-        $this->tagId=$tagId;
+        $this->name = $name;
+        $this->quantity = $quantity;
+       $this->tagId = $tagId;
+        $this->createdAt = $createdAt ?? Carbon::now();
+        $this->correctionTime = $correctionTime ?? Carbon::now();
+
     }
+
 
     public function getId(): int
     {
         return $this->id;
     }
+
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getCategory(): string
-    {
-        return $this->category;
     }
 
     public function getQuantity(): int
@@ -53,18 +50,19 @@ private string $correctionTime;
         return $this->quantity;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
         return $this->createdAt;
     }
 
-    public function getCorrectionTime()
+    public function getCorrectionTime(): string
     {
         return $this->correctionTime;
     }
 
     public function getTagId(): int
     {
+
         return $this->tagId;
     }
 
@@ -72,12 +70,6 @@ private string $correctionTime;
     {
         $this->tagId = $tagId;
     }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
 
 
 }

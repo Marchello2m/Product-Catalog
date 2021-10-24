@@ -37,7 +37,7 @@ class MysqlTagsRepository implements TagsRepository
 
         foreach ($tags as $tag) {
             $collection->add(new Tag(
-                $tag['id'],
+                $tag['product_id'],
                 $tag['category']
 
             ));

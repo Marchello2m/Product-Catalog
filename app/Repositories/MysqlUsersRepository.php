@@ -72,12 +72,12 @@ class MysqlUsersRepository implements UsersRepository
 
     public function save(User $user): void
     {
-        $sql = "INSERT INTO users (id,email,name,password, created_at)VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO users (id,name,email,password,created_at)VALUES (?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([
             $user->getId(),
-            $user->getEmail(),
             $user->getName(),
+            $user->getEmail(),
             $user->getPassword(),
             $user->getCreatedAt()
         ]);
@@ -91,8 +91,8 @@ class MysqlUsersRepository implements UsersRepository
 
         return new  User(
             $user['id'],
-            $user['email'],
             $user['name'],
+            $user['email'],
             $user['password'],
             $user['created_at']
         );

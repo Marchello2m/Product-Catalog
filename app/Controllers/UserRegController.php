@@ -1,9 +1,11 @@
 <?php
-namespace  App\Controllers;
+
+namespace App\Controllers;
 
 use App\Models\User;
 use App\Repositories\MysqlUsersRepository;
 use App\Repositories\UsersRepository;
+use App\View;
 use Ramsey\Uuid\Nonstandard\Uuid;
 
 
@@ -13,13 +15,18 @@ class UserRegController
 
     public function __construct()
     {
-        $this->usersRepository=new MysqlUsersRepository();
+        $this->usersRepository = new MysqlUsersRepository();
     }
 
 
-    public function showRegisterForm()
+    public function showRegisterForm():View
     {
-        require_once 'app/Views/users/signUp.php';
+        $user = $this->usersRepository->getAll();
+
+        return new View('users/signUp.twig', [
+            'user' => $user
+        ]);
+
     }
 
     public function register()
@@ -27,9 +34,9 @@ class UserRegController
         $this->usersRepository->save(
             new User(
                 Uuid::uuid4(),
-                $_POST['email'],
                 $_POST['name'],
-                password_hash($_POST['password_confirmation'],PASSWORD_DEFAULT),
+                $_POST['email'],
+                password_hash($_POST['password_confirmation'], PASSWORD_DEFAULT),
 
             )
 
@@ -37,37 +44,56 @@ class UserRegController
 
         header('Location: /');
     }
-    public function showLoginForm()
+
+    public function showLoginForm():View
     {
-        require_once 'app/Views/users/login.php';
+        $user=$this->usersRepository->getAll();
+        return new View('users/login.twig', [
+            'user' => $user
+        ]);
+
+    }
+
+    public function main():View
+    {$user= $this->usersRepository->getAll();
+
+        return new View('main.template.twig', [
+            'users' => $user
+        ]);
+
+
     }
 
 
-
-    public function login()
+    public function login(): void
     {
         $user = $this->usersRepository->getByEmail($_POST['email']);
 
-        if ($user !== null && password_verify($_POST['password'],$user->getPassword()))
-        {
-            $_SESSION['authId']=$user->getId();
+        if ($user !== null && password_verify($_POST['password'], $user->getPassword())) {
+            $_SESSION['authId'] = $user->getId();
             header('Location: /login');
 
             exit;
         }
 
-        header( 'Location: /app/Views/main.template.php');
+        header('Location: /main');
 
     }
-    public function showLogOutForm()
+
+    public function showLogOutForm():View
     {
-        require_once 'app/Views/products/index.template.php';
+        $user= $this->usersRepository->getAll();
+
+        return new View('products/index.template.twig', [
+            'users' => $user
+        ]);
+
     }
 
 
     public function logout()
     {
         unset($_SESSION['authId']);
-        header( 'Location: /login');
+        header('Location: /login');
     }
 }

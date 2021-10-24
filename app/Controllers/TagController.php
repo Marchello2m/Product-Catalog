@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\Tag;
 use App\Repositories\MysqlTagsRepository;
 use App\Repositories\TagsRepository;
+use App\View;
 
 class TagController
 {
@@ -17,12 +18,12 @@ class TagController
 
         $this->tagsRepository=new MysqlTagsRepository();
     }
-    public function index()
+    public function index():View
     {
-        $tags=$this->tagsRepository->getAll();
-
-        //require_once 'app/Views/main.template.php';
-       require_once 'app/Views/tags/tag.template.php';
+        $tags = $this->tagsRepository->getAll();
+        return new View('tags/tag.template.twig', [
+            'tags' => $tags
+        ]);
     }
     public function store()
     {

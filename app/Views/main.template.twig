@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Main Page{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+<br>
+
+
+<a href="/products">Products</a>
+Products
+<br>
+<a href="/create">Add new product</a>
+new Product
+<br>
+<a href="/users">Members</a>
+Members of ...
+<br>
+
+<a href="/logout">Logout</a>
+Logout
+
+
+<br>
+<a href="/login">Back</a>
+Back
+<br>
+
+<br>
+{% for product in products.products %}
+<li>
+    {{ product. name }}
+    {{ product.Category }}
+    </a>
+    <small>
+        {{ product.createdAt}}
+    </small>
+    Daudzums:   {{ product.quantity}}
+    <td><a href="/create" ?id="{{ product.id }}">Edit</a></td>
+    <td><a href="/app/Controllers/ProductsController.php" ?id="{{ product.id }}">Delete</a></td>
+
+</li>
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
+
+
+</body>
+</html>

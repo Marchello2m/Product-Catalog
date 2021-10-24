@@ -39,13 +39,14 @@ class MysqlProductsRepository implements ProductsRepository
         {
             $productsCollection->addProduct(new Product(
 
-                $product['id'],
+                  $product['id'],
                 $product['name'],
-                $product['category'],
                 $product['quantity'],
+                $product['tagId'],
                 $product['createdAt'],
-                $product['correctionTime'],
-                $product['tagId']
+                $product['correctionTime']
+
+
             ));
         }
         return $productsCollection;
@@ -53,20 +54,22 @@ class MysqlProductsRepository implements ProductsRepository
     }
     public function save(Product $product):void
     {
-        $sql = "INSERT INTO products_in_store (name,category,quantity, createdAt,correctionTime,tagId)VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO products_in_store (id,name,quantity,tagId,createdAt,correctionTime)VALUES (?,?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([
+            $product->getId(),
             $product->getName(),
-            $product->getCategory(),
             $product->getQuantity(),
+            $product->getTagId(),
             $product->getCreatedAt(),
-            $product->getCorrectionTime(),
-            $product->getTagId()
+            $product->getCorrectionTime()
+
+
         ]);
     }
     public function getOne(string $id): ?Product
     {
-        $sql ="SELECT * FROM products_in_store  WHERE category =?";
+        $sql ="SELECT * FROM products_in_store  WHERE id =?";
         $stmt=$this->connection->prepare($sql);
         $stmt->execute([$id]);
         $product =$stmt->fetch();
@@ -74,26 +77,25 @@ class MysqlProductsRepository implements ProductsRepository
         return new  Product(
             $product['id'],
             $product['name'],
-            $product['category'],
             $product['quantity'],
+            $product['tagId'],
             $product['createdAt'],
-            $product['correctionTime'],
-            $product['tagId']
+            $product['correctionTime']
+
+
         );
 
 
     }
 
-    public function merge()
+    public function delete(Product $product):void
     {
-        $sql = "SELECT id_signup,id_products_in_store,
-        FROM mid
-        JOIN signup ON products_in_store
-        ORDER BY id";
-
-        $result = [];
-        foreach ($mysqli->query($sql) as $row) {
-            $data[$row['id']][] = $row;
+        if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem'])) {
+            $sql = "DELETE FROM products_in_store where id=? ";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$product->getId()]);
         }
     }
+
+
 }

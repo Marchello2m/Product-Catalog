@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tags{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+<a href="/register">Add new Members</a>
+Register new member
+<br>
+<a href="/login">Login</a>
+Add new member
+<br>
+(<a href="/">Back</a>)
+back
+<br>
+<br>
+<br>
+<br>
+
+<form action="/tag" method="POST">
+    <div>
+
+        <label for="category">Name:</label>
+        <input id="category" type="text" name="category"/>
+    </div>
+    <br/>
+    <br/>
+
+    <br/>
+    <button type="submit">Submit</button>
+    {% for tag in tags.tags %}
+    <li > Id: {{ tag. id }}</li>
+    <li > Category: {{ tag.category}}</li>
+
+    {% endfor %}
+
+</form>
+
+
+
+
+    {% endblock %}
+
+
+</body>
+</html>

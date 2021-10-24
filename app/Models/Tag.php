@@ -4,17 +4,17 @@ namespace App\Models;
 
 class Tag
 {
-    private int $id ;
+    private int $product_id ;
     private string $category;
 
-    public function __construct(int $id, string $category)
+    public function __construct(int $product_id, string $category)
     {
-        $this->id = $id;
+        $this->product_id= $product_id;
         $this->category = $category;
     }
     public function getId(): int
     {
-        return $this->id;
+        return $this->product_id;
     }
 
     public function getCategory(): string

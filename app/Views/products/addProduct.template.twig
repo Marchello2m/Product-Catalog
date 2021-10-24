@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Add Products{% endblock %}</title>
+
+</head>
+<body>
+{% block content %}
+Add Product
+<br>
+(<a href="/main">Back</a>)
+<br>
+<br/>
+<div>
+    <form action="/create" method="POST">
+        <div>
+            <label for="name">Product:</label>
+            <input id="name" type="text" name="name"/>
+        </div>
+        <br>
+        <div>
+            <label for="quantity">Quantity</label>
+            <input id="quantity" type="number" name="quantity"/>
+        </div>
+        <br>
+      Tag id 1: Phone
+        2: Personal Computer
+        3:tv
+        4: Audio
+        5:Game
+        <div>
+            <label for="tagId">TagId:</label>
+            <input id="tagId" type="number" name="tagId" min="1" max="5"/>
+        </div>
+        <br>
+
+
+        <br/>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+        {% endblock %}
+</body>
+</html>

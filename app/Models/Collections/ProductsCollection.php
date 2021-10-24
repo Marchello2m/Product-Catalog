@@ -8,12 +8,11 @@ use App\Models\Product;
 
 class ProductsCollection
 {
-   private array $products=[];
+    private array $products = [];
 
-    public function __construct(array $products=[])
+    public function __construct(array $products = [])
     {
-        foreach ($products as $product)
-        {
+        foreach ($products as $product) {
             $this->addProduct($product);
         }
 
@@ -21,10 +20,10 @@ class ProductsCollection
 
     public function addProduct(Product $product)
     {
-        $this->products[$product->getName()]=$product;
+        $this->products[$product->getName()] = $product;
     }
 
-    public function getProducts():array
+    public function getProducts(): array
     {
         return $this->products;
     }

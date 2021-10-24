@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+<a href="/register">Add new Members</a>
+Register new member
+<br>
+<a href="/login">Login</a>
+
+
+<br>
+<a href="/tag">tag</a>
+Tags And numbers
+
+<br>
+<br>
+{% for product in products.products %}
+    <li>
+        {{ product. name }}
+            {{ product.Category }}
+        </a>
+        <small>
+            {{ product.createdAt}}
+        </small>
+     Daudzums:   {{ product.quantity}}
+        <td><a href="/create" ?id="{{ product.id }}">Edit</a></td>
+        <td><a href="/delete.php" ?id="{{ product.id }}">Delete</a></td>
+
+    </li>
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
+
+
+</body>
+</html>

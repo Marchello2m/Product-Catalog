@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}List of Users!{% endblock %}</title>
+</head>
+
+<body>
+{% block content %}
+<h1>Users</h1>(<a href="main">Back</a>)
+
+
+
+<br><br>
+<ul>
+    {% for user in users.users %}
+
+
+        <li>
+       <td>User ID:     {{ user. id }}</td>
+            <br>
+            <td> User Name:   {{ user. name }}</td>
+            <br>
+            <td>  User Pass: {{ user.password }}</td>
+            <br>
+            <td>  User Email:   {{ user. email }}</td>
+            <br>
+
+            <td>  Register Time:  {{ user. createdAt}}</td>
+
+
+        </li>
+        {% endfor %}
+    <br>   <br>
+</ul>
+{% endblock %}
+</body>
+</html>

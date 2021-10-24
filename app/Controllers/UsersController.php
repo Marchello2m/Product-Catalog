@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Repositories\MysqlUsersRepository;
 use App\Repositories\UsersRepository;
+use App\View;
 
 class UsersController
 {
@@ -16,11 +17,14 @@ class UsersController
     }
 
 
-    public function index()
+    public function index():View
     {
-        $users=  $this->usersRepository->getAll();
+        $users = $this->usersRepository->getAll();
+
+        return new View('users/usersRegister.twig', [
+            'users' => $users
+        ]);
 
 
-        require_once 'app/Views/users/usersRegister.php';
     }
 }
